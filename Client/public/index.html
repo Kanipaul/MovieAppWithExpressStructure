@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>10 Movies to watch - A Movie App with Express</title>
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/style.css" rel="stylesheet">
+    <script src="javascripts/jquery.min.js"></script>
+  </head>
+  <body>
+    <script src="javascripts/movie.js"></script>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="site-container">
+          <header itemscope="" class="site-header">
+            <div class="wrap"><div class="title-area">
+              <p itemprop="headline" class="site-title">
+                <a href="#">Ten Movies to watch</a></p>
+                </div>
+              </div>
+          </header>
+        </div>
+        </div>
+      </div>
+      <br/>
+    <div class="well">
+      <div class="row">
+    		<div class="col-md-12">
+    			<div class="row">
+    				<div class="col-md-1">
+              <button class="btn btn-success" id="prev" type="submit">Previous</button>
+    				</div>
+    				<div class="col-md-4">
+              <img src="" id="img" class="img-thumbnail"/>
+    				</div>
+    				<div class="col-md-6">
+              <div class="jumbotron">
+                <div class="featurette featurette-divider" id="services">
+              <h4 id="title"></h4><br/>
+              <h4 id="year"></h4><br/>
+              <h4 id="actors"></h4><br/>
+              <h4 id="director"></h4><br/>
+              <p id="desc"></p><br/>
+              <p>
+                    <small><h3>
+                   <span id="date"></span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                     <b>Ratings : <span id="imdbRating"></span></b>
+                     &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                     <b>Awards : </b><span id="Awards"></span></h3></small>
+              </p>
+              <span>
+                  <a id="modal-75492" class="btn btn-success btn-large" href="#modal-container-75492" role="button" data-toggle="modal">Add new</a>
+                  <a id="updateDetails" class="btn btn-primary btn-large" href="#modal-container-754922" role="button" data-toggle="modal">Update</a>
+                  <a id="modal-754921" class="btn btn-danger btn-large" href="#modal-container-754921" role="button" data-toggle="modal">Delete</a>
+              </span>
+              </div>
+             </div>
+    				</div>
+            <div class="col-md-1">
+              <button class="btn btn-success" id="next" type="submit">Next</button>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    </div>
+    <br/>
+
+    <!-- ***************************************     Adding a new movie ***********************************************************************-->
+            <div class="modal fade" id="modal-container-75492" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      ×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                      Add a new Movie
+                    </h4>
+                  </div>
+                    <div class="modal-body">
+                      <!-- action="add" method="post" -->
+                    <form class="form-horizontal" id="updateDetails" action="/addMovie" method="post">
+                       <div class="form-group">
+                         <label class="col-lg-2 control-label" id="label" for="inputName">Movie Name</label>
+                         <div class="col-lg-10">
+                           <input class="form-control" name="Title" placeholder="Movie Name" type="text">
+                         </div>
+                       </div>
+                       <div class="form-group">
+                         <label class="col-lg-2 control-label" id="label" for="inputName">Image</label>
+                         <div class="col-lg-10">
+                           <input class="form-control" name="Image" placeholder="Image URL" type="text">
+                         </div>
+                       </div>
+                       <div class="form-group">
+                         <label class="col-lg-2 control-label" id="label" for="inputName">Year</label>
+                         <div class="col-lg-10">
+                           <input class="form-control" name="Year" placeholder="Release Year" type="text">
+                         </div>
+                       </div>
+                     <div class="form-group">
+                         <label class="col-lg-2 control-label" id="label" for="inputName">Actors</label>
+                         <div class="col-lg-10">
+                           <input class="form-control" name="Actors" placeholder="Actors" type="text">
+                         </div>
+                       </div>
+                       <div class="form-group">
+                         <label class="col-lg-2 control-label" id="label" for="inputName">Director</label>
+                         <div class="col-lg-10">
+                           <input class="form-control" name="Director" placeholder="Directors" type="text">
+                         </div>
+                       </div>
+                       <div class="form-group">
+                         <label class="col-lg-2 control-label" id="label" for="inputName">Description</label>
+                         <div class="col-lg-10">
+                           <textarea class="form-control" name="Plot" placeholder="Movie Description" rows="3"></textarea>
+                         </div>
+                       </div>
+                       <div class="form-group">
+                         <label class="col-lg-3 control-label" id="label" for="inputName">Released Date</label>
+                         <div class="col-lg-10">
+                           <input class="form-control" name="Released" placeholder="Released Date" />
+                         </div>
+                       </div>
+                       <div class="form-group">
+                         <label class="col-lg-2 control-label" id="label" for="inputMessage">Ratings</label>
+                         <div class="col-lg-10">
+                           <input class="form-control" name="imdbRating" placeholder="Ratings" >
+                         </div>
+                       </div>
+
+                       <div class="form-group">
+                         <label class="col-lg-2 control-label" id="label" for="inputEmail">Awards</label>
+                         <div class="col-lg-10">
+                           <input class="form-control" name="Awards" placeholder="Awards" >
+                         </div>
+                       </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                      Close
+                    </button>
+                    <input type="submit" value="Add" id="save" name="btnSave" class="btn btn-success">
+                    </button>
+                  </div>
+                </form>
+                </div>
+            </div>
+            </div>
+    <!-- *************************************** End of Adding a new movie function***********************************************************************-->
+
+    <!-- ***************************************     Deleting a movie ***********************************************************************-->
+    <div class="modal fade" id="modal-container-754921" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel">
+              Delete Movie
+            </h4>
+          </div>
+            <div class="modal-body">
+            <form class="form-horizontal" action="/deleteMovie" method="post">
+              <div class="form-group">
+                <label class="col-lg-10" id="label" for="inputEmail">Are you sure you want to delete the below movie ?</label>
+                <div class="col-lg-10">
+                  <input id="deleteTitle" class="form-control" name="Title" type="text">
+                </div>
+              </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">
+              Close
+            </button>
+            <input type="submit" value="Delete" name="btnSave" id="save" class="btn btn-danger">
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+    <!-- **********************************************************************************************************************************-->
+
+    <!-- ***************************************     Updating movie details ***********************************************************************-->
+
+    <div class="modal fade" id="modal-container-754922" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                         Update movie details
+                        </h4>
+                      </div>
+                      <div class="modal-body">
+                        <form class="form-horizontal" id="updateDetails" action="/updateMovie" method="post">
+
+                           <div class="form-group">
+                             <label class="col-lg-2 control-label" id="label" for="inputName">Movie Name</label>
+                             <div class="col-lg-10">
+                               <input readonly="readonly" id="title1" class="form-control" name="Title" placeholder="Movie Name" type="text"  />
+                             </div>
+                           </div>
+
+                           <div class="form-group">
+                             <label class="col-lg-2 control-label" id="label" for="inputName">Image</label>
+                             <div class="col-lg-10">
+                               <input id="img1" class="form-control" name="Poster" placeholder="ImageURL" type="text" />
+                             </div>
+                           </div>
+
+                           <div class="form-group">
+                             <label class="col-lg-2 control-label" id="label" for="inputName">Year</label>
+                             <div class="col-lg-10">
+                               <input id="year1" class="form-control" name="Year" placeholder="Release Year" type="text" />
+                             </div>
+                           </div>
+
+                           <div class="form-group">
+                             <label class="col-lg-2 control-label" id="label" for="inputName">Actors</label>
+                             <div class="col-lg-10">
+                               <input id="actors1" class="form-control" name="Actors" placeholder="Actors" type="text" />
+                             </div>
+                           </div>
+
+                           <div class="form-group">
+                             <label class="col-lg-2 control-label" id="label" for="inputName">Director</label>
+                             <div class="col-lg-10">
+                               <input id="director1" class="form-control" name="Director" placeholder="Directors" type="text"></input>
+                             </div>
+                           </div>
+
+                           <div class="form-group">
+                             <label class="col-lg-2 control-label" id="label" for="inputName">Description</label>
+                             <div class="col-lg-10">
+                               <textarea id="desc1" class="form-control" name="Plot" placeholder="Movie Description" rows="3"></textarea>
+                             </div>
+                           </div>
+
+                           <div class="form-group">
+                             <label class="col-lg-3 control-label" id="label" for="inputEmail">Released Date</label>
+                             <div class="col-lg-10">
+                               <input id="date1" class="form-control" name="Released" placeholder="Release Date" />
+                             </div>
+                           </div>
+
+                           <div class="form-group">
+                             <label class="col-lg-2 control-label" id="label" for="inputMessage">Ratings</label>
+                             <div class="col-lg-10">
+                               <input id="imdbRating1" class="form-control" name="imdbRating" placeholder="Ratings" >
+                             </div>
+                           </div>
+
+                           <div class="form-group">
+                             <label class="col-lg-2 control-label" id="label" for="inputEmail">Awards</label>
+                             <div class="col-lg-10">
+                               <input id="Awards1" class="form-control" name="Awards" placeholder="Awards" >
+                             </div>
+                           </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                          Close
+                        </button>
+                        <button class="btn btn-success" type="submit" name="btnSave">Update</button>
+                       </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+    <!--******************************************************************************************************************************* -->
+
+
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script src="javascripts/scripts.js"></script>
+  </body>
+  </html>
